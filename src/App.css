@@ -1,0 +1,170 @@
+/* 背景與整體容器 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #3e3e60);
+  color: white;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 聊天主框架 */
+.chat-wrapper {
+  width: 95%;
+  max-width: 800px;
+  height: 90vh;
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 標題與描述 */
+.chat-header {
+  text-align: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #bbbbbb;
+  margin-top: 6px;
+}
+
+/* 訊息區 */
+.chat-box {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 單一訊息容器 */
+.msg {
+  padding: 12px 16px;
+  border-radius: 12px;
+  max-width: 90%;
+  width: fit-content;
+  word-break: break-word;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.msg-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.user {
+  align-self: flex-end;
+  background-color: rgba(97, 218, 251, 0.15);
+  border: 1px solid #61dafb;
+  color: #61dafb;
+}
+
+.assistant {
+  align-self: flex-start;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid #ffffff33;
+  color: #ffffff;
+}
+
+/* 打字機動畫 */
+.typing span {
+  display: inline-block;
+  border-right: 2px solid #ccc;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 2s steps(30, end), blink 0.8s step-end infinite;
+  max-width: 100%;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+/* 輸入欄與按鈕 */
+.input-row {
+  display: flex;
+  gap: 10px;
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.input-row input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 1rem;
+}
+
+.input-row input::placeholder {
+  color: #cccccc;
+}
+
+.input-row button {
+  padding: 12px 20px;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+  transition: background 0.3s ease;
+}
+
+.input-row button:hover {
+  background-color: #21a1f1;
+}
+
+/* 動畫 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RWD 調整 */
+@media (max-width: 480px) {
+  .chat-wrapper {
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .input-row {
+    flex-direction: column;
+  }
+
+  .input-row input,
+  .input-row button {
+    width: 100%;
+  }
+}
