@@ -13,7 +13,7 @@ body {
 
 /* 聊天主框架 */
 .chat-wrapper {
-  width: 95%;
+  width: 120%;
   max-width: 800px;
   height: 90vh;
   backdrop-filter: blur(18px);
@@ -53,8 +53,18 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  max-height: 60vh;      /* 或你想要的高度 */
+  overflow-y: auto;      /* 垂直捲軸 */
+  scrollbar-width: thin; /* Firefox：細的捲軸 */
+  scrollbar-color: #5286ba #0c0f3b;
 }
-
+.chat-box::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-box::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
 /* 單一訊息容器 */
 .msg {
   padding: 12px 16px;
